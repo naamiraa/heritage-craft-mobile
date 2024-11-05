@@ -55,14 +55,15 @@ referensi: [api.flutter.dev](https://api.flutter.dev/flutter/widgets/State/setSt
 
 
 **4. Jelaskan perbedaan antara `const` dengan `final`.**
+
 `const` di Dart adalah menjadikan variabel konstan sejak waktu kompilasi saja. Keyword `const` digunakan untuk mendeklarasikan variabel yang nilainya diketahui dan ditetapkan saat waktu kompilasi dan dia tidak dapat diubah. Sedangkan `final` digunakan untuk mengkodekan nilai - nilai variabel secara permanen dan tidak dapat diubah di masa mendatang, bergitu pula jenis operasi apapun yang dilakukan pada variabel - variabel ini tidak dapat mengubah nilainya (state). `final` variabel akan dievaluasi pada saat runtime ketika diberi nilai, kemudian variabel tersebut juga menjadi tidak dapat diubah.
 
 Contoh:
 
 ````dart
-    void main() {
-        final int finalValue = DateTime.now().year;
-        const int constValue = DateTime.now().year;
+void main() {
+    final int finalValue = DateTime.now().year;
+    const int constValue = DateTime.now().year;
 }
 ````
 Dalam contoh ini, `finalValue` dievaluasi saat runtime dan diberi nilai tahun saat ini menggunakan `DateTime.now().year`. Nilainya tetap konstan setelah ditetapkan.
@@ -71,13 +72,15 @@ Di sisi lain, `constValue` dievaluasi saat compile time, artinya dia menerima ni
 
 referensi: [educative.io](https://www.educative.io/answers/what-is-the-difference-between-const-and-final-keyword-in-dart)
 
-**Const:** Nilai harus diketahui saat *compile-time*, misalnya `const birthday = "2006/12/02"` dan tidak dapat diubah setelah inisialisasi.
-**FInal:** Nilai harus diketahui saat *run-time*, misalnya adalah `final birthday = getBirthDateFromDB()` dan juga tidak dapat diubah setelah inisialisasi.
+**Const:** Nilai harus diketahui saat *compile-time*, misalnya `const birthday = "2006/12/02"` dan tidak dapat diubah setelah inisialisasi
+
+**Final:** Nilai harus diketahui saat *run-time*, misalnya adalah `final birthday = getBirthDateFromDB()` dan juga tidak dapat diubah setelah inisialisasi.
 
 referensi: [stackoverflow](https://stackoverflow.com/questions/50431055/what-is-the-difference-between-the-const-and-final-keywords-in-dart)
 
 
 **5. Cara mengimplementasikan checklist-checklist di atas.**
+
 __Membuat direktori baru untuk menyimpan Project Flutter__
 - Menjalankan command di bawah ini dalam Command prompt untuk membuat flutter project
 ```
@@ -100,8 +103,10 @@ __Membuat widget__
 - Pada setiap tombol, saya menambahkan `SnackBar` yang akan muncul saat tombol ditekan dan menampilkan pesan, “Kamu telah menekan tombol {nama}!”. Saya menggunakan `ScaffoldMessenger` untuk memunculkan `SnackBar` ini
 
 __Mengintegrasikan Menu dengan main.dart__
+
 Setelah kode pada  `menu.dart` sudah sesuai, selanjutnya adalah mengintegrasikan MenuPage ini dengan `main.dart` agar dapat menampilkan seluruh `card` yang saya miliki di `HomePage`. Saya melakukan ini dengan memanggil `MyHomePage()` sebagai nilai home di `MaterialApp` pada `main.dart`.
 
 __Melakukan add, commit, push ke GitHub__
+
 Langkah terakhir yang saya lakukan pada Tugas 7 ini adalah melakukan `git add, git commit, git push` ke GitHub.
 
