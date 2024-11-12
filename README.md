@@ -3,7 +3,7 @@ Nama: Namira Aulia
 NPM : 2306165931  
 Kelas: PBP - C
 
-### TUGAS 7
+# TUGAS 7
 **1.  Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.**  
 Stateless widget adalah widget statis dimana seluruh konfigurasi yang dimuat didalamnya telah diinisiasi sejak awal. 
 Sedangkan Stateful widget berlaku sebaliknya dimana sifatnya adalah dinamis, sehingga widget ini dapat diperbaharui kapanpun dibutuhkan berdasarkan user actions atau ketika terjadinya perubahan data. 
@@ -104,4 +104,132 @@ Setelah kode pada  `menu.dart` sudah sesuai, selanjutnya adalah mengintegrasikan
 
 __E. Melakukan add, commit, push ke GitHub__  
 Langkah terakhir yang saya lakukan pada Tugas 7 ini adalah melakukan `git add, git commit, git push` ke GitHub.
+
+
+
+# TUGAS 8
+**1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?**  
+Di Flutter, `const` digunakan untuk menentukan nilai atau widget yang bersifat konstan atau tidak berubah selama runtime. Keyword `const` membuat objek menjadi compile-time constant, artinya nilainya sudah ditentukan ketika aplikasi dikompilasi dan tidak akan berubah setelah itu.
+
+**Keuntungan Menggunakan const di Flutter:**
+- Mengurangi penggunaan memori: Karena const hanya menyimpan satu instance dari objek tersebut, aplikasi menggunakan lebih sedikit memori.
+- Meningkatkan performa aplikasi: Flutter menghindari membuat ulang objek yang sama saat render ulang, sehingga membuat aplikasi lebih cepat dan responsif.
+- Meningkatkan keterbacaan kode: Penggunaan const membuat pembacaan kode lebih jelas, yaitu bahwa suatu nilai atau widget adalah konstan dan tidak boleh berubah.
+
+**Kapan Sebaiknya Menggunakan const:**
+- Stateless Widget: Jika memiliki widget statis atau konten yang tidak berubah, seperti teks atau ikon dalam sebuah halaman.
+- Nilai tetap di dalam Widget tree: Misalnya pada widget seperti `Text('Hello')` atau `Icon(Icons.home)`, lebih baik menggunakan `const` jika nilai tersebut tidak akan berubah.
+- Layouts dan padding yang tetap: Saat mendefinisikan `EdgeInsets` atau `SizedBox` dengan ukuran tetap yang tidak berubah, penggunaan `const` akan lebih efisien.
+
+**Kapan Tidak Menggunakan const:**
+- Dynamic Content: Jika nilai atau widget tersebut akan berubah selama runtime, maka sebaiknya tidak menggunakan `const`. Misalnya untuk menampilkan teks yang akan di-update dari waktu ke waktu, maka sebaiknya tidak menggunakan `const `
+- Stateful Widget: Jika widget tergantung pada perubahan state atau memuat data dari sumber dinamis, const tidak dapat digunakan, karena kontennya tidak statis.
+
+referensi: [medium](https://medium.com/@pakorn_traipan/final-vs-const-in-dart-choosing-the-right-variable-type-for-your-program-2117c2a3b96b#:~:text=Because%20const%20variables%20are%20known%20at%20compile-time%2C%20they,compiler%20cannot%20optimize%20them%20in%20the%20same%20way)
+
+**2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!**   
+`Column` dan `Row` adalah dua widget layout dasar dalam Flutter yang digunakan untuk mengatur elemen-elemen secara vertikal atau horizontal. Keduanya sangat berguna ketika kita ingin mengatur posisi widget anak-anak (children) dalam aplikasi.   
+**a. Column**  
+Column digunakan untuk menampilkan widget-widget secara vertikal (dari atas ke bawah). Semua elemen anak dalam `Column` diatur dalam satu kolom.   
+**Properti Penting pada Column:**
+- `mainAxisAlignment`: Mengatur posisi widget di dalam `Column` secara vertikal (misalnya, di atas, di tengah, atau di bawah).
+- `crossAxisAlignment`: Mengatur posisi widget secara horizontal dalam `Column`.
+- `children`: Menyimpan daftar widget yang akan ditempatkan di dalam `Column`.
+
+Contoh implementasi:
+```dart
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: <Widget>[
+    Text('Text pertama'),
+    Text('Text kedua'),
+    ElevatedButton(
+      onPressed: () {},
+      child: Text('Tombol'),
+    ),
+  ],
+)
+```
+Pada contoh di atas:
+- `mainAxisAlignment`: `MainAxisAlignment.center` menempatkan seluruh konten `Column` di tengah secara vertikal.
+- `crossAxisAlignment`: `CrossAxisAlignment.start` menyelaraskan elemen di awal secara horizontal.
+
+**b. Row**   
+`Row` digunakan untuk menyusun widget secara horizontal (kiri ke kanan). Widget ini cocok untuk menyusun elemen-elemen yang membutuhkan ruang horizontal, seperti menu atau tombol-tombol yang diletakkan bersebelahan.   
+**Properti Penting pada Row:**
+- `mainAxisAlignment`: Mengatur posisi widget di dalam `Row` secara horizontal.
+- `crossAxisAlignment`: Mengatur posisi widget secara vertikal dalam `Row`.
+- `children`: Menyimpan daftar widget yang akan ditempatkan di dalam `Row`.  
+Contoh implementasi:
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: <Widget>[
+    Icon(Icons.home),
+    Text('Home'),
+    ElevatedButton(
+      onPressed: () {},
+      child: Text('Go'),
+    ),
+  ],
+)
+```
+Pada contoh di atas:
+- `mainAxisAlignment`: `MainAxisAlignment.spaceBetween` menempatkan elemen-elemen pada `Row` dengan jarak yang sama antara satu sama lain.
+- `crossAxisAlignment`: `CrossAxisAlignment.center` menyelaraskan elemen di tengah secara vertikal dalam `Row`.
+
+referensi: [geeksforgeeks](https://www.geeksforgeeks.org/row-and-column-widgets-in-flutter-with-example/)
+
+
+**3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!**  
+Pada halaman form ini, elemen input yang saya gunakan adalah `TextFormField` untuk nama produk, harga produk, deskripsi produk, url gambar produk, kategori produk, daerah asal produk, dan stok produk. Setiap elemen `TextFormField` dilengkapi dengan validasi, seperti memeriksa apakah input kosong atau tidak, dan memastikan format angka untuk harga dan stok barang.
+
+**Elemen input Flutter lain yang tidak digunakan:**
+- DropdownButtonFormField: elemen untuk memilih item dari list item. Elemen ini berguna jika ada opsi kategori atau pilihan daerah asal yang sudah ditentukan sebelumnya, sehingga user dapat memilih tanpa mengetik.
+- Switch: elemen toggle untuk mengubah status *active* atau *non-active*.
+- Radio: elemen untuk memilih satu dari beberapa pilihan
+- Checkbox: elemen yang memungkinkan user untuk dapat memilih lebih dari satu pilihan.
+
+referensi: [medium](https://medium.com/@anyeon/flutter-input-widget-3c3e492ac97a)
+
+**4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?**  
+Pada aplikasi Flutter yang saya buat, tema diatur dengan menggunakan `ThemeData` pada `MaterialApp`. Saya menerapkan tema dengan cara mendefinisikan warna dasar (`primarySwatch`) sebagai warna cokelat dan warna sekunder (`secondary`) dengan warna yang melengkapi, yaitu cokelat keabu-abuan. Mengatur tema seperti ini memastikan bahwa komponen UI, seperti AppBar, tombol, dan elemen lain, secara otomatis menggunakan warna yang seragam, menciptakan tampilan aplikasi yang lebih konsisten. Selain itu, pengaturan `useMaterial3: true` memungkinkan aplikasi untuk menggunakan gaya Material Design terbaru. Berikut adalah kode yang mengatur tema dalam aplikasi heritage craft ini:
+
+````dart
+theme: ThemeData(
+colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: Colors.brown,
+).copyWith(secondary: const Color.fromARGB(255, 171, 129, 110)),
+useMaterial3: true,
+),
+````
+
+**5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?**  
+Untuk menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter, saya menggunakan metode navigasi `Navigator.push()` dan `Navigator.pushReplacement()`. 
+- `Navigator.push` berfungsi untuk menambahkan halaman baru di atas halaman saat ini dalam stack navigasu. Navigator ini cocok saat pengguna mungkin ingin kembali ke halaman sebelumnya menggunakan tombol back. Cara kerjanya adalah dengan menyimpan halaman lama di stack, sehingga pengguna dapat kembali ke halaman tersebut dengan `Navigator.pop` atau dengan tombol back pada perangkat. 
+    ```dart
+    Navigator.push(
+    context,
+    MaterialPageRoute(
+        builder: (context) => ProductEntryFormPage(),
+    ),
+    );
+    ```
+    Dengan `Navigator.push`, pengguna dapat kembali ke halaman sebelumnya dengan tombol back pada perangkat, sehingga cocok untuk halaman yang memungkinkan pengguna untuk kembali.
+
+- `Navigator.pushReplacement` berfungsi untuk mengganti halaman saat ini dengan halaman baru, tanpa menambahkan halaman baru ke stack. Navigator ini cocok untuk halaman seperti splash screen atau layar login yang tidak ingin diakses kembali setelah pengguna pindah ke halaman utama.
+    ```dart
+    Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+        builder: (context) => ProductEntryFormPage(),
+    ),
+    );
+    ```
+    Pada onTap di "Tambah Produk", `Navigator.pushReplacement` digunakan untuk membuka `ProductEntryFormPage`. Ini membuat transisi langsung ke halaman `ProductEntryFormPage` dan menghapus halaman sebelumnya dari stack.
+
+
+ 
 
